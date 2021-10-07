@@ -30,16 +30,17 @@ $aadUserData = Foreach ($aadUser in $aadUsers) {
         if (-Not $result) {
             # User does not exist; display error and update `aadUser.result`
             Write-Warning "User $($aadUser.email) not found"
-            $aadUser.result = "User not found"
+            $aadUser.aadResult = "User not found"
         }
     }
     if ($result) {
         # Custom: Adding CH Email and CH Org to AAD Data
-        Add-Member -InputObject $result -MemberType NoteProperty -Name "Control Hub Email" -Value $aadUser.email
+        Add-Member -InputObject $result -MemberType NoteProperty -Name "Control Hub Email" -Value $aadUser.chEmail
+        Add-Member -InputObject $result -MemberType NoteProperty -Name "Control Hub Person ID" -Value $aadUser.chPersonId
         Add-Member -InputObject $result -MemberType NoteProperty -Name "Control Hub Org" -Value $aadUser.chOrg
         # User exists; push `result` object into `aadUserData` array and update `aadUser.result`
         $result
-        $aadUser.result = "Success"
+        $aadUser.aadResult = "Success"
     }
 }
 # Write-Output of `aadUserData` array to CSV
