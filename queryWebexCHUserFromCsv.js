@@ -45,6 +45,7 @@ async function queryWebexCHUserFromCSV(url, headers) {
         user.chEmail = response.data.items[0].emails[0];
         user.chOrgId = response.data.items[0].orgId;
         user.chResult = "Success";
+        console.log(`Successfully querried Webex for ${user.email}`);
       }
     }
     writeCsv(users, chUsersCsv);

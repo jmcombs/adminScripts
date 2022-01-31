@@ -49,7 +49,7 @@ async function updateWebexCHUserEmailFromCSV(url, headers) {
           user.chUpdateEmailResult = "Success";
         }
       } catch (error) {
-        if (error.response.status == 404) {
+        if (error.response.status === 404) {
           console.error(`User ${user.chEmail} not found`);
           user.chUpdateEmailResult = "User not found";
         }
