@@ -15,7 +15,7 @@
 # Set CSV filename for expored list of Azure Active Directory User data
 $aadUserDataCsv = '/home/coder/files/userdata.csv'
 # Set Group Name to Search Azure AD for
-$aadGrpName = 'All Company'
+$aadGrpName = 'CTP-SG-CiscoWebex-Cloud-Collab'
 
 # Query Azure AD Group Memebership by Group Display Name and store in `aadGrpMembers` Array
 $aadGrpMembers = Get-AzADGroupMember -GroupDisplayName $aadGrpName
