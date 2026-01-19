@@ -1,11 +1,11 @@
 const fs = require("fs");
 const axios = require("axios");
 const parse = require("parse-link-header");
-const stringify = require("csv-stringify");
+const { stringify } = require("csv-stringify");
 
 const orgId;
 const accessToken;
-const url = "https://webexapis.com/v1/people";
+const url = "https://webexapis.com/v1/people?callingData=true";
 const headers = {
   Authorization: `Bearer ${accessToken}`,
 };
@@ -26,7 +26,11 @@ async function getCHUserList(url, headers, params) {
         displayName: user.displayName,
         email: user.emails[0],
         id: user.id,
+        locationId: "",
       };
+      if (user.locationId) {
+        orgUser.locationId = user.locationId;
+      }
       orgUserData.push(orgUser);
     });
     let parsed = parse(response.headers.link);

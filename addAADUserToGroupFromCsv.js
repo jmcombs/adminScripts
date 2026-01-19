@@ -1,7 +1,7 @@
 const fs = require("fs");
 const axios = require("axios");
-const parse = require("csv-parse");
-const stringify = require("csv-stringify");
+const { parse } = require("csv-parse");
+const { stringify } = require("csv-stringify");
 
 // To obtain Graph API Access Token run `Get-AzAccessToken -ResourceTypeName MSGraph` from `Az` PowerShell Module
 const accessToken;
@@ -11,7 +11,7 @@ const headers = {
 };
 
 const aadUsersCsv = "./aadusers.csv";
-const aadGroupName = "CTP-SG-CiscoWebex-Cloud-Collab";
+const aadGroupName = "Webex";
 let aadGroupInfo;
 
 async function parseCsv(csvFile) {
